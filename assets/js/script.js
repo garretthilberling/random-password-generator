@@ -9,25 +9,50 @@ function writePassword() {
   var promptPasswordLength = Number(window.prompt('What is your desired password length? (pick between 8 and 128 characters)'));
 
   // validate prompt answer
-  if (promptPasswordLength === "" || promptPasswordLength === null || isNaN(promptPasswordLength)) {
+  if (promptPasswordLength === "" || promptPasswordLength === null || isNaN(promptPasswordLength) || promptPasswordLength < 8 || promptPasswordLength > 128) {
     window.alert("Please provide a valid numerical answer. Select number of characters between *8* and *128*. Please try again.");
-    return writePassword();
     console.log("Please try again");
-  } 
-  else if (promptPasswordLength < 8 || promptPasswordLength > 128) {
-    window.alert("Please provide a valid numerical answer. Select number of characters between *8* and *128*. Please try again.");
     return writePassword();
-  }
+  } 
   else {
     window.alert("Your password length has been set to " + promptPasswordLength + " characters.");
+    console.log("password is " + promptPasswordLength + " characters.");
   }
 
-  // varPromptCharacterTypes = window.
+  var promptLowerCase = window.confirm("Include lower case? Select OK for 'yes' or Cancel for 'no.'");
+  if (promptLowerCase === true) {
+    window.alert("Lower case letters will be included.");
+  } else {
+    window.alert("Lower case letters will be excluded.");
+  } console.log(promptLowerCase); // OK = true, Cancel = false
 
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+  var promptUpperCase = window.confirm("Include upper case? Select OK for 'yes' or Cancel for 'no.'");
+  if (promptUpperCase === true) {
+    window.alert("Upper case letters will be included.");
+  } else {
+    window.alert("Upper case letters will be excluded.");
+  } console.log(promptUpperCase); // OK = true, Cancel = false
 
-  passwordText.value = password;
+  var promptNumber = window.confirm("Include numbers? Select OK for 'yes' or Cancel for 'no.'");
+  if (promptNumber === true) {
+    window.alert("Numbers will be included.");
+  } else {
+    window.alert("Numbers will be excluded.");
+  } console.log(promptNumber); // OK = true, Cancel = false
+
+  var promptSpecialCharacter = window.confirm("Include special characters? Select OK for 'yes' or Cancel for 'no.'");
+  if (promptSpecialCharacter === true) {
+    window.alert("Special characters will be included.");
+  } else {
+    window.alert("Special characters will be excluded.");
+  } console.log(promptSpecialCharacter); // OK = true, Cancel = false
+
+  // window.confirm("Include lower case?", "Include upper case?", "Include numeric?", "Include special characters?");
+
+  // var password = generatePassword();
+  // var passwordText = document.querySelector("#password");
+
+  // passwordText.value = password;
 
 }
 
